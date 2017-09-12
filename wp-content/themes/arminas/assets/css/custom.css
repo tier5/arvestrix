@@ -1,0 +1,529 @@
+.contact h1{
+    color: #0a31a3;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.tabs h2{
+    color: #0a31a3;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 37px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 20px 0;
+    letter-spacing: 1px;
+}
+
+.tabs h2 a{
+    color: #0a31a3;
+    text-transform: lowercase;
+}
+
+.contact p{
+    font-weight: 600;
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.tabs p{
+    font-weight: 500;
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.tabs p span{
+    color: #000;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.ui-widget.ui-widget-content {
+    border: none;
+    margin: 0 100px;
+}
+
+.ui-widget-header {
+    border: none;
+    background: none;
+    display: inline-block;
+    margin: 50px 0 !important;
+}
+.ui-tabs .ui-tabs-nav li {
+    display: inline-block;
+    background: #0a31a3;
+    margin: 0;
+    border: 1px solid #0a31a3;
+    border-radius: 0;
+}
+
+.ui-tabs .ui-tabs-nav li:first-child {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.ui-tabs .ui-tabs-nav li:last-child {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    color: #fff;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px 100px;
+    border-right: 1px solid #fff;
+}
+
+.ui-tabs .ui-tabs-nav li:last-child .ui-tabs-anchor{
+    border: none;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active{
+    padding: 0;
+}
+
+.ui-tabs .ui-state-active, .ui-tabs.ui-widget-content .ui-state-active,.ui-tabs .ui-widget-header .ui-state-active{
+    border: 1px solid #0a31a3;
+    background: #fff;
+    color: #0a31a3;
+}
+
+.ui-tabs .ui-state-active a,.ui-tabs .ui-state-active a:link,.ui-tabs .ui-state-active a:visited {
+    color: #0a31a3;
+    text-decoration: none;
+}
+
+.ui-tabs .ui-state-active a:focus{
+    outline: none;
+}
+
+.callus{
+    display: block;
+    font-size: 30px;
+    text-transform: capitalize;
+}
+
+.tabs #accordion p{
+    text-align: left;
+}
+
+.ui-tabs #accordion .ui-state-active {
+    border: none;
+    background: #fff;
+    color: #0a31a3;
+}
+
+.ui-accordion .ui-accordion-header {
+    outline: none;
+    color: #0a31a3;
+    border: none;
+    background: none;
+    font-size: 24px;
+       padding-left: 0;
+}
+
+.ui-accordion .ui-accordion-content {
+    border: none;
+    padding: 0 0 20px;
+}
+
+.faq{
+    display: block;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 38px;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.ui-icon, .ui-widget-content .ui-icon {
+    background: url(../images/faq_2.jpg) no-repeat;
+    background-size: 100%;
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+}
+
+.ui-state-active .ui-icon, .ui-button:active .ui-icon {
+    background: url(../images/faq_1.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.product-details{
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.product-details h1{
+    text-transform: uppercase;
+    color: #333;
+    font-size: 27px;
+    letter-spacing: 1px;
+       margin-top: 0;
+}
+.product-details h2{
+    text-transform: uppercase;
+    color: #333;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.product-details h2 span.price{
+    color: #878787;
+    font-size: 28px;
+}
+.product-details h2 span.offerprice{
+    color: #0a31a3;
+    font-size: 28px;
+}
+
+.product-details .box{
+    margin: 30px 0;
+}
+
+.product-details p{
+    font-weight: 600;
+    font-size: 18px;
+    color: #666;
+    margin: 20px 0;
+}
+
+.product-details ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-details ul li{
+    display: inline-block;
+}
+
+.product-details ul li a{
+    display: block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.product-details ul li a.black{
+    background: #000;
+}
+.product-details ul li a.green{
+    background: #00a652;
+}
+.product-details ul li a.red{
+    background: #eb1c24;
+}
+.product-details ul li a.blue{
+    background: #0930a2;
+}
+.product-details ul li a.orange{
+    background: #f26522;
+}
+.product-details ul li a.pink{
+    background: #f06dab;
+}
+
+.product-details .quantity-section h2{
+    text-transform: capitalize;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.product-details .quantity-section ul li{
+    border: 1px solid #ccc;
+    float: left;
+    font-size: 24px;
+    text-align: center;
+    height: 60px;
+    width: 110px;
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.product-details .quantity-section ul li.add, .product-details .quantity-section ul li.minus{
+    width: 55px;
+}
+
+.product-details .quantity-section ul li input{
+    width: 100%;
+    text-align: center;
+    border: none;
+    height: 100%;
+}
+
+.product-details .quantity-section ul li input:focus{
+    outline: none;
+}
+
+.product-details a.add-to-cart{
+    font-family: 'Open Sans', sans-serif;
+    display: block;
+    background: #0000fe;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 15px 10px;
+    transition: 0.5s;
+    border: 1px solid #0000fe;
+}
+
+.product-details a.add-to-cart:hover{
+    border: 1px solid #0000fe;
+    background: none;
+    color: #0000fe;
+    border-radius: 0;
+}
+
+.pro-details{
+    background: #f1f1f1;
+}
+
+.pro-details .ui-widget.ui-widget-content{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 100px;
+}
+
+.pro-details .ui-tabs .ui-tabs-nav li {
+    background: #fff6f7;
+    border: 1px solid #fff6f7;
+   border-radius: 0;
+    width: 33.33%;
+}
+
+.pro-details .ui-tabs .ui-state-active, .pro-details .ui-tabs.ui-widget-content .ui-state-active, 
+.pro-details .ui-tabs .ui-widget-header .ui-state-active {
+    border: 1px solid #fff;
+    background: #fff;
+}
+
+.pro-details .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    font-family: 'Open Sans', sans-serif;
+    color: #666;
+    font-size: 27px;
+    text-transform: none;
+    font-weight: 600;
+    border-right: 1px solid #ccc;
+    padding: 40px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.pro-details .ui-tabs .ui-tabs-nav .ui-tabs-anchor:focus {
+    outline: none;
+}
+
+.pro-details .ui-tabs .ui-tabs-panel {
+    display: inline-block;
+    width: 100%;
+}
+
+.pro-details .ui-widget-header {
+    margin: 0 !important;
+    width: 100%;
+    padding: 0;
+}
+
+.pro-details h3 {
+    font-family: 'Open Sans', sans-serif;
+    color: #666;
+    font-size: 27px;
+    text-transform: none;
+    font-weight: 600;
+}
+
+.pro-details h4 {
+    font-family: 'Open Sans', sans-serif;
+    color: #666;
+    font-size: 22px;
+    text-transform: none;
+    font-weight: 600;
+}
+
+.pro-details #tabs-1 img{
+    width: 70%;
+}
+
+.pro-details #tabs-1 ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pro-details #tabs-1 ul li{
+    font-family: 'Open Sans', sans-serif;
+    display: inline-block;
+    font-size: 30px;
+    padding: 0 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.pro-details #tabs-1 ul li:first-child{
+    color: #0000fe;
+}
+
+.pro-details #tabs-1 ul li:last-child{
+    color: #666;
+}
+
+.pro-details .ratings{
+    color: #ffa52f;
+    font-size: 30px;
+}
+
+.pro-details #tabs-1 a.writereview{
+    display: block;
+    color: #0000fe;
+    border: 2px solid #0000fe;
+    text-align: center;
+    font-size: 20px;
+    width: 75%;
+    padding: 15px 0;
+}
+
+.review-section{
+    border-top: 1px solid #ccc;
+    margin-top: 50px;
+    padding: 50px 20px;
+}
+
+.review-title{
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.each-review{
+    margin: 40px 0;
+}
+
+.each-review .author{
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.review-body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    color: #666;
+}
+
+.ui-widget-content a.seeall{
+    display: inline-block;
+    color: #0000fe;
+    font-size: 20px;
+}
+
+.product-view {
+    padding-top: 50px;
+}
+
+/* Control buttons  */
+#quote-carousel .carousel-control
+{
+  background: none;
+  color: #222;
+  font-size: 2.3em;
+  text-shadow: none;
+  margin-top: 30px;
+}
+/* Previous button  */
+#quote-carousel .carousel-control.left 
+{
+  left: -12px;
+}
+/* Next button  */
+#quote-carousel .carousel-control.right 
+{
+  right: -12px !important;
+}
+
+.product-view .carousel-inner .item:before{
+    display: none;
+}
+
+.product-view .carousel-inner .item img{
+    margin: auto;
+}
+
+@media screen and (min-width:768px) and (max-width:1199px){
+    .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+        font-size: 17px;
+        padding: 10px 40px;
+    }
+    .callus, .faq {
+        font-size: 30px;
+    }
+    .product-details a.add-to-cart {
+        margin-top: 20px;
+        margin-left: -15px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .ui-widget.ui-widget-content {
+        margin: 0;
+    }
+    .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+        font-size: 14px;
+        padding: 13px;
+    }
+    .tabs h2 {
+        font-size: 24px;
+        margin: 10px 0;
+        letter-spacing: 0;
+    }
+    .callus, .faq {
+        font-size: 20px;
+    }
+
+    .ui-widget-header {
+        margin: 10px 0 !important;
+    }
+
+    .tabs p, .tabs p span {
+        font-size: 15px;
+    }
+
+    .ui-accordion .ui-accordion-header {
+        font-size: 17px;
+    }
+    .ui-icon, .ui-widget-content .ui-icon {
+        height: 20px;
+        width: 20px;
+        margin-right: 5px;
+    }
+    .tabs #accordion p {
+        margin: 0;
+        font-size: 13px;
+    }
+    .product-details a.add-to-cart {
+        margin-top: 20px;
+        margin-left: -15px;
+    }
+    .pro-details .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+        font-size: 17px;
+        padding: 12px 0;
+    }
+}
