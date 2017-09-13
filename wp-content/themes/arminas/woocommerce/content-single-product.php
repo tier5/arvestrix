@@ -19,7 +19,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
+global $product;
 ?>
 
 <?php
@@ -36,49 +36,194 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 }
 ?>
 
-<div id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
+<section class="product-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<div class="search-body">
+					<form>
+						<input placeholder="Search" type="text">
+						<button><i class="fa fa-search" aria-hidden="true"></i></button>
+					</form>
+				</div>      
+			</div> 
+		</div>  
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="product-view">
+				
+					<div class="carousel slide" data-ride="carousel" id="quote-carousel">
+						<!-- Carousel Slides / Quotes -->
+						<div class="carousel-inner">
+							<!-- Quote 1 -->
+							<?php
+							$i = 0;
+							$attachment_ids = $product->get_gallery_attachment_ids(); 
+							foreach( $attachment_ids as $attachment_id ): $i++;
+							$image_link = wp_get_attachment_url( $attachment_id ); 
+							?>
+							<div class="item <?php if($i==1):echo 'active'; endif; ?>">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<img src="<?php echo $image_link; ?>" class="img-responsive"  alt="image">
+									</div>
+								</div>
+							</div>
+							<?php endforeach; ?>
+						</div>
 
-	<?php
-		/**
-		 * woocommerce_before_single_product_summary hook.
-		 *
-		 * @hooked woocommerce_show_product_sale_flash - 10
-		 * @hooked woocommerce_show_product_images - 20
-		 */
-		do_action( 'woocommerce_before_single_product_summary' );
-	?>
+						<!-- Carousel Buttons Next/Prev -->
+						<a data-slide="prev" href="#quote-carousel" class="left carousel-control">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.png" class="img-responsive a-left"  alt="image">
+						</a>
+						<a data-slide="next" href="#quote-carousel" class="right carousel-control">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow2.png" class="img-responsive a-right"  alt="image">
+						</a>
+					</div>  
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="product-details">
+					<h1><?php the_title(); ?></h1>
+					<?php the_content(); ?>
+					<div class="box colors">
+						<h2>available colors</h2>
+						<ul>
+							<li><a href="#" class="black"></a></li>
+							<li><a href="#" class="blue"></a></li>
+							<li><a href="#" class="green"></a></li>
+							<li><a href="#" class="red"></a></li>
+							<li><a href="#" class="orange"></a></li>
+							<li><a href="#" class="pink"></a></li>
+						</ul>
+					</div>
+					<div class="box">
+						<h2>current price: <span class="price"> 
+						<?php echo get_woocommerce_currency_symbol().$product->get_regular_price();?>
+						</span></h2>
+					</div>
+					<div class="box">
+						<h2>offer price: <span class="offerprice">
+						<?php echo get_woocommerce_currency_symbol().$product->get_regular_price();?>
+						</span></h2>
+					</div>
+					<div class="box quantity-section">
+						<h2>quantity:</h2>
+						<div class="col-md-6">
+							<div class="row">
+								<ul>
+									<li class="minus">-</li>
+									<li><input id="qty1" type="text" value="1" class="qty"/></li>
+									<li class="add">+</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<input type="hidden" id="product_id" value="<?php the_ID();?>">
+							<a href="<?php echo home_url().'/?add-to-cart='.get_the_ID().'&quantity=1'; ?>" class="add-to-cart">add to cart</a>
 
-	<div class="summary entry-summary">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="pro-details">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
 
-		<?php
-			/**
-			 * woocommerce_single_product_summary hook.
-			 *
-			 * @hooked woocommerce_template_single_title - 5
-			 * @hooked woocommerce_template_single_rating - 10
-			 * @hooked woocommerce_template_single_price - 10
-			 * @hooked woocommerce_template_single_excerpt - 20
-			 * @hooked woocommerce_template_single_add_to_cart - 30
-			 * @hooked woocommerce_template_single_meta - 40
-			 * @hooked woocommerce_template_single_sharing - 50
-			 * @hooked WC_Structured_Data::generate_product_data() - 60
-			 */
-			do_action( 'woocommerce_single_product_summary' );
-		?>
+					<div id="tabs">
+						<ul>
+							<?php 
+							$tabs = apply_filters( 'woocommerce_product_tabs', array() );
+							if ( ! empty( $tabs ) ) : 
+							//print_r($tabs);
+							$i=0;
+							foreach ($tabs as $key => $value) : $i++;?>
+							 	<li><a href="#tabs-<?php echo $i; ?>"><?php echo $value['title']; ?></a></li>
+							<?php
+							endforeach;
+							endif; 
+							?>
+						</ul>
+						<div id="tabs-1">
+							<h3>Reviews</h3>
+							<div class="row rating-top">
+								<div class="col-sm-4">
+									<h4>Rating Snapshot</h4>
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" class="img-responsive" alt="image">
+								</div>
+								<div class="col-sm-4">
+									<h4>Average Customer Ratings</h4>
+									<ul>
+										<li>4</li>
+										<li>|</li>
+										<li>128 Reviews</li>
+									</ul>
+									<div class="ratings">
+										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star-o" aria-hidden="true"></i>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<a href="#" class="writereview">Write a Review</a>
+								</div>
+								<?php //comments_template( 'woocommerce/single-product-reviews' );?>
+							</div>
+							<div class="row review-section">
+								<div class="col-sm-12">
+									<?php
+									$args = array( 
+									                'number'      => 100, 
+									                'status'      => 'approve', 
+									                'post_status' => 'publish', 
+									                'post_type'   => 'product' 
+									        );
 
-	</div><!-- .summary -->
-
-	<?php
-		/**
-		 * woocommerce_after_single_product_summary hook.
-		 *
-		 * @hooked woocommerce_output_product_data_tabs - 10
-		 * @hooked woocommerce_upsell_display - 15
-		 * @hooked woocommerce_output_related_products - 20
-		 */
-		do_action( 'woocommerce_after_single_product_summary' );
-	?>
-
-</div><!-- #product-<?php the_ID(); ?> -->
-
-<?php do_action( 'woocommerce_after_single_product' ); ?>
+									$comments = get_comments( $args );
+									foreach($comments as $comment) :
+									
+									$date = new DateTime($comment->comment_date);
+									$now = new DateTime();
+									?>
+									<div class="each-review">
+										<div class="ratings">
+											<i class="fa fa-star" aria-hidden="true"></i>
+											<i class="fa fa-star" aria-hidden="true"></i>
+											<i class="fa fa-star" aria-hidden="true"></i>
+											<i class="fa fa-star" aria-hidden="true"></i>
+											<i class="fa fa-star-o" aria-hidden="true"></i>
+										</div>
+										<div class="review-title"><?php echo $comment->comment_content; ?></div>
+										<div class="author">By <?php echo $comment->comment_author; ?>, <?php echo $date->diff($now)->format("%d days, %h hours and %i minuts"); ?> ago</div>
+										<div class="review-body"><?php echo $comment->comment_content; ?></div>
+									</div>
+									<?php endforeach; ?>
+									
+									
+									<a href="#" class="seeall">See all 126 customer reviews (newest first)</a>
+								</div>
+							</div>
+						</div>
+						<div id="tabs-2">
+							<p><?php
+							$post_id = get_the_ID(); 
+							the_field('product_details', $post_id);
+							?></p>
+						</div>
+						<div id="tabs-3">
+							<p><?php the_field('faq', $post_id);?></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

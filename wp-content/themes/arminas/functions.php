@@ -110,3 +110,56 @@ add_action( 'login_form_bottom', 'add_keep_me_logged_in_link' );
 function add_keep_me_logged_in_link() {
 return '<div class="form-group keep-sign"><lebel><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Keep me signed in.</lebel></div>';
 }
+
+
+/**
+* Remove the description tab
+*/
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+
+function woo_remove_product_tabs( $tabs ) {
+
+    unset( $tabs['description'] );          // Remove the description tab
+    return $tabs;
+
+}
+
+add_filter( 'woocommerce_product_tabs', 'woo_new_product_details_tab' );
+function woo_new_product_details_tab( $tabs ) {
+    
+    
+/**
+* Add product details tab
+*/  
+    $tabs['product_details'] = array(
+        'title'     => __( 'Product Details', 'woocommerce' ),
+        'priority'  => 40,
+        'callback'  => 'woo_new_product_details_tab_content'
+    );
+
+    $tabs['faq'] = array(
+        'title'     => __( 'FAQ', 'woocommerce' ),
+        'priority'  => 50,
+        'callback'  => 'woo_new_product_faq_tab_content'
+    );
+
+    return $tabs;
+
+}
+function woo_new_product_details_tab_content() {
+
+    // The new tab content
+
+    echo '<h2>New Product Tab</h2>';
+    echo '<p>Here\'s your new product tab.</p>';
+    
+}
+
+function woo_new_product_faq_tab_content() {
+
+    // The new tab content
+
+    echo '<h2>New Product Tab</h2>';
+    echo '<p>Here\'s your new product tab.</p>';
+    
+}

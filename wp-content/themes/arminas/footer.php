@@ -176,6 +176,9 @@
             if (!isNaN(currentVal)) {
                 $qty.val(currentVal + 1);
             }
+            
+            generate_add_to_cart_url(currentVal+1);
+
           });
           $('.minus').on('click',function(){
             var $qty=$(this).parent().find('.qty');
@@ -183,8 +186,18 @@
             if (!isNaN(currentVal) && currentVal > 0) {
                 $qty.val(currentVal - 1);
             }
+
+            generate_add_to_cart_url(currentVal-1);
+
           });
         });
+
+        function generate_add_to_cart_url(qty) {
+
+          var product = $("#product_id").val();
+          var addToCartUrl = "<?php echo home_url();?>";
+          $(".add-to-cart").attr("href",addToCartUrl+'/?add-to-cart='+product+'&quantity='+qty);
+        }
       </script>
       <?php wp_footer();?>
    </body>
