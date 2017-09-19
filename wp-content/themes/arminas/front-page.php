@@ -203,7 +203,7 @@
 				<p>We'll keep you in the loop with Dop-in announcements, studio openings, exclusive content and more!</p>
 				<form>
 					<div class="form-group">
-						<input class="zip" type="text" placeholder="Zip Code" required="required">
+						<!-- <input class="zip" type="text" placeholder="Zip Code" required="required"> -->
 						<input class="email" type="email"  placeholder="E-mail" required="required">
 						<input type="submit" value="Submit">
 					</div>

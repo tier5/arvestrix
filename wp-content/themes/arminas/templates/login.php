@@ -1,5 +1,11 @@
 <?php
 /*Template Name: Login*/
+
+if(is_user_logged_in()):
+    wp_redirect(home_url());
+    exit;
+endif;
+
 get_header("sign-up");
 ?>
 <div class="half-left pink" style="background: url(<?php echo the_post_thumbnail_url(); ?>) no-repeat left; height: 100%; background-size: cover;">

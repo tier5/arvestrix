@@ -91,12 +91,16 @@ global $product;
 					<div class="box colors">
 						<h2>available colors</h2>
 						<ul>
-							<li><a href="#" class="black"></a></li>
-							<li><a href="#" class="blue"></a></li>
-							<li><a href="#" class="green"></a></li>
-							<li><a href="#" class="red"></a></li>
-							<li><a href="#" class="orange"></a></li>
-							<li><a href="#" class="pink"></a></li>
+						<?php
+						
+						$attrs = $product->get_attributes();
+						$attrsOptions = $attrs["colors"]["options"];
+						
+						foreach ($attrsOptions as $attr) {
+							
+							echo '<li><a href="#" class="'.strtolower($attr).'"></a></li>';
+						}
+						?>
 						</ul>
 					</div>
 					<div class="box">
@@ -106,7 +110,7 @@ global $product;
 					</div>
 					<div class="box">
 						<h2>offer price: <span class="offerprice">
-						<?php echo get_woocommerce_currency_symbol().$product->get_regular_price();?>
+						<?php echo get_woocommerce_currency_symbol().$product->get_sale_price();?>
 						</span></h2>
 					</div>
 					<div class="box quantity-section">
@@ -160,55 +164,92 @@ global $product;
 								<div class="col-sm-4">
 									<h4>Average Customer Ratings</h4>
 									<ul>
-										<li>4</li>
+										<li>
+										<?php 
+										$args = array( 
+											'number'      => '', 
+											'status'      => 'approve', 
+											'post_status' => 'publish', 
+											'post_type'   => 'product',
+											'post_id' 	  => get_the_ID() 
+											);
+
+										$comments = get_comments( $args );
+										foreach($comments as $comment) :
+											$rating =  get_comment_meta( $comment->comment_ID, 'rating' );
+										$avgRating +=$rating[0];
+										endforeach;
+										if(get_comments_number()!=0){
+										$finalAvgRating = round($avgRating/get_comments_number());	
+										echo $finalAvgRating;
+										} else {
+											echo "0";
+										}
+										?>	
+										</li>
 										<li>|</li>
-										<li>128 Reviews</li>
+										<li><?php echo get_comments_number(); ?> Reviews</li>
 									</ul>
 									<div class="ratings">
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star-o" aria-hidden="true"></i>
+										<?php
+										for ( $i=0; $i<$finalAvgRating; $i++ ) { 
+											echo '<i class="fa fa-star" aria-hidden="true"></i>';
+										}
+
+										for ( $i=0; $i<5-$finalAvgRating; $i++ ) { 
+											echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+										}
+										?>
 									</div>
 								</div>
 								<div class="col-sm-4">
-									<a href="#" class="writereview">Write a Review</a>
+									<a href="#comments_post_template" class="writereview">Write a Review</a>
 								</div>
-								<?php //comments_template( 'woocommerce/single-product-reviews' );?>
+								<div id="comments_post_template">
+									<?php //comments_template( 'woocommerce/single-product-reviews' );?>
+								</div>
+								
 							</div>
 							<div class="row review-section">
 								<div class="col-sm-12">
 									<?php
 									$args = array( 
-									                'number'      => 100, 
+									                'number'      => 10, 
 									                'status'      => 'approve', 
 									                'post_status' => 'publish', 
-									                'post_type'   => 'product' 
+									                'post_type'   => 'product',
+									                'post_id' 	  => get_the_ID()	
 									        );
 
 									$comments = get_comments( $args );
 									foreach($comments as $comment) :
-									
+									//echo "<pre>";
+									//print_r($comment);
 									$date = new DateTime($comment->comment_date);
 									$now = new DateTime();
 									?>
 									<div class="each-review">
 										<div class="ratings">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star-o" aria-hidden="true"></i>
+										<?php $rating =  get_comment_meta( $comment->comment_ID, 'rating', true );
+										for ( $i=0; $i<$rating; $i++ ) { 
+											echo '<i class="fa fa-star" aria-hidden="true"></i>';
+										}
+
+										for ( $i=0; $i<5-$rating; $i++ ) { 
+											echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+										}
+
+										?>
 										</div>
 										<div class="review-title"><?php echo $comment->comment_content; ?></div>
-										<div class="author">By <?php echo $comment->comment_author; ?>, <?php echo $date->diff($now)->format("%d days, %h hours and %i minuts"); ?> ago</div>
+										<div class="author">By <?php echo $comment->comment_author; ?>, <?php echo $date->diff($now)->format("%d days"); ?> ago</div>
 										<div class="review-body"><?php echo $comment->comment_content; ?></div>
 									</div>
 									<?php endforeach; ?>
 									
-									
-									<a href="#" class="seeall">See all 126 customer reviews (newest first)</a>
+									<a href="#" class="seeall">
+									<?php comments_number( 'no responses', 'See 1 customer review', 'See all % customer reviews' ); ?>
+									</a>
 								</div>
 							</div>
 						</div>

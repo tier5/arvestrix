@@ -163,3 +163,16 @@ function woo_new_product_faq_tab_content() {
     echo '<p>Here\'s your new product tab.</p>';
     
 }
+
+/**
+* Admin panel access restriction except administrator
+**/
+
+add_action( 'init', 'arvestrix_blockusers_init' );
+function arvestrix_blockusers_init() {
+if ( is_admin() && ! current_user_can( 'administrator' ) &&
+! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+wp_redirect( home_url() );
+exit;
+}
+}

@@ -27,6 +27,8 @@
       <script src="<?php echo get_template_directory_uri(); ?>/assets/js/creative.min.js"></script>
 
       <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-ui.js"></script>
+      <script src='https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js'></script>
+      <script src="<?php echo get_template_directory_uri(); ?>/assets/js/validation.js"></script>
       <script>
         $( function() {
           $( "#tabs" ).tabs();

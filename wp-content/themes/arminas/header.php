@@ -42,15 +42,22 @@
                   </div> 
                   <div class="log-sign">
                      <ul>
-                        <li><a href="<?php echo site_url();?>/login">Login</a></li>
-                        <li><a href="<?php echo site_url();?>/sign-up">Sign Up</a></li>
+                     <?php if( is_user_logged_in() ) { ?>
+                     <li><a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a></li>
+                     <?php } else { ?>
+                     <li><a href="<?php echo site_url();?>/login">Login</a></li>
+                     <li><a href="<?php echo site_url();?>/sign-up">Sign Up</a></li>
+                     <?php } ?>                       
                      </ul>   
                   </div>
                   <div class="header-search">
                      <div class="header-search-main">
-                     <form>
-                        <input type="text"><button><i class="fa fa-search" aria-hidden="true"></i></button>
-                     </form>
+                     
+                     <form action="<?php echo home_url( '/' ); ?>" method="get">
+    
+    <input type="text" name="s" id="search" value="<?php the_search_query(); ?>" />
+    <button><i class="fa fa-search" aria-hidden="true"></i></button>
+</form>
                      </div>
                   </div>
 

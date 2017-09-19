@@ -1,5 +1,11 @@
 <?php
 /*Template Name: Sign Up*/
+
+if(is_user_logged_in()):
+    wp_redirect(home_url());
+    exit;
+endif;
+    
 global $wpdb;
 get_header("sign-up");
 
@@ -24,32 +30,35 @@ endif;
       <div class="half orange">
          <div class="half-main">
             <h2>Create account</h2>
-            <form method="post" action="" enctype="multipart/form-data">
+            <form name="registration" method="post" action="" enctype="multipart/form-data" novalidate="novalidate" autocomplete="off">
                 <div class="form-group">
                   <label>Name</label>
                   <input class="form-control" type="text" name="username">
                 </div>
                 <div class="form-group">
                   <label>E-MAIL ADDRESS</label>
-                  <input class="form-control" type="email" name="email">
+                  <input class="form-control" type="email" name="email" autocomplete="false">
                 </div>
                 <div class="form-group">
                   <label>PASSWORD</label>
-                  <input class="form-control" type="password" name="password">
+                  <input class="form-control" type="password" name="password" id="password">
                 </div>
                 <div class="form-group">
                   <label>RE-ENTER PASSWORD</label>
-                  <input class="form-control" type="password" name="re-password">
+                  <input class="form-control" type="password" id="confirmpassword" name="confirmpassword">
                 </div>
                 <div class="form-group align-center">
                     <input type="hidden" name="register" id="register" value="register">
                     <input class="btn btn-submit" type="submit" value="Sign Up">
                 </div> 
                 <div class="form-group">
-                <p>
-                By creating an account, you agree to United Thermos's <a href="#">Conditions of Use</a> and 
-                <a href="#">Privacy Notice</a>.
-                </p>
+                <?php 
+                if( have_posts() ):
+                  while( have_posts() ): the_post();
+                    the_content();
+                  endwhile;
+                endif;     
+                ?>
                 </div> 
             </form>
          </div>

@@ -1,33 +1,38 @@
-( function( $ ) {
-   $("#user_login").addClass("form-control");
-   $("#user_pass").addClass("form-control");
-   $("#wp-submit").addClass("btn btn-submit");
-   $(".login-submit").addClass("align-center");
-
-   $("form[name='loginform']").validate({
+// Wait for the DOM to be ready
+$(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='registration']").validate({
     // Specify validation rules
     rules: {
       // The key name on the left side is the name attribute
       // of an input field. Validation rules are defined
       // on the right side
-      log: {
+      username: "required",
+      
+      email: {
         required: true,
         // Specify that email should be validated
         // by the built-in "email" rule
         email: true
       },
-      pwd: {
+      password: {
         required: true,
         minlength: 5
       },
+      confirmpassword:{
+        equalTo: "#password"
+      }
     },
     // Specify validation error messages
     messages: {
-      log: "Please enter your e-mail address",
-      pwd: {
+      username: "Please enter your username",
+      password: {
         required: "Please provide a password",
         minlength: "Your password must be at least 5 characters long"
-      }, 
+      },
+      email: "Please enter a valid email address",
+      confirmpassword :" Enter Confirm Password Must Be Same as Password"
     },
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
@@ -35,5 +40,4 @@
       form.submit();
     }
   });
-} )( jQuery );
-
+});
