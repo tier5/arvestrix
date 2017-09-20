@@ -32,7 +32,7 @@
          <?php if( is_page( "login" ) ): ?>
          Don't have an account? <a href="<?php echo site_url(); ?>/sign-up">SIGN UP</a>
          <?php else : ?>
-         Already have account? <a href="<?php echo site_url(); ?>/login">Login</a>
+         Already have an account? <a href="<?php echo site_url(); ?>/login">Login</a>
          <?php endif; ?>
          </div>
       </div>

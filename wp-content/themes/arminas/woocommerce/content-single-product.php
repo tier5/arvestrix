@@ -92,14 +92,10 @@ global $product;
 						<h2>available colors</h2>
 						<ul>
 						<?php
-						
-						$attrs = $product->get_attributes();
-						$attrsOptions = $attrs["colors"]["options"];
-						
-						foreach ($attrsOptions as $attr) {
-							
-							echo '<li><a href="#" class="'.strtolower($attr).'"></a></li>';
-						}
+						$terms = get_terms("pa_colors");
+						foreach ( $terms as $term ) :
+						echo '<li><a href="#" class="'. strtolower($term->name) .'"></a></li>';
+						endforeach;
 						?>
 						</ul>
 					</div>

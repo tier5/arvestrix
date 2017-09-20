@@ -25,7 +25,6 @@ if( $_POST['register'] == 'register' ):
 endif;
 ?>
 <div class="half-left pink" style="background: url(<?php echo the_post_thumbnail_url(); ?>) no-repeat left; height: 100%; background-size: cover;">
-        <!-- <img src="images/login-bg.jpg" alt="img"> -->
       </div>
       <div class="half orange">
          <div class="half-main">
@@ -37,7 +36,7 @@ endif;
                 </div>
                 <div class="form-group">
                   <label>E-MAIL ADDRESS</label>
-                  <input class="form-control" type="email" name="email" autocomplete="false">
+                  <input class="form-control" type="email" name="email" value="">
                 </div>
                 <div class="form-group">
                   <label>PASSWORD</label>

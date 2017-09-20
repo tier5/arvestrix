@@ -176,3 +176,78 @@ wp_redirect( home_url() );
 exit;
 }
 }
+
+/**
+* Change shop page link in cart page
+**/
+
+function arvestrix_empty_cart_redirect_url() {
+
+    return home_url();
+}
+add_filter( 'woocommerce_return_to_shop_redirect', 'arvestrix_empty_cart_redirect_url' );
+
+
+/**
+* Change return to shop button text in cart page
+**/
+
+add_filter( 'gettext', 'arvestrix_change_woocommerce_return_to_shop_text', 20, 3 );
+
+function arvestrix_change_woocommerce_return_to_shop_text( $translated_text, $text, $domain ) {
+
+    switch ( $translated_text ) {
+
+        case 'Return to shop' :
+
+        $translated_text = __( 'Return to Home', 'woocommerce' );
+        break;
+
+    }
+
+    return $translated_text;
+}
+
+/**
+* Curl function for instagram api
+**/
+function arvestrix_instagram_api_curl_connect( $api_url ){
+    $connection_c = curl_init(); // initializing
+    curl_setopt( $connection_c, CURLOPT_URL, $api_url ); // API URL to connect
+    curl_setopt( $connection_c, CURLOPT_RETURNTRANSFER, 1 ); // return the result, do not print
+    curl_setopt( $connection_c, CURLOPT_TIMEOUT, 20 );
+    $json_return = curl_exec( $connection_c ); // connect and get json data
+    curl_close( $connection_c ); // close connection
+    return json_decode( $json_return ); // decode and return
+}
+
+/**
+* Fetch and display all instagram images
+**/
+
+function arvestrix_get_all_instagram_images() {
+    $access_token = 'YOUR ACCESS TOKEN';
+    $username = 'jonvaughns1';
+    $user_search = arvestrix_instagram_api_curl_connect("https://api.instagram.com/v1/users/search?q=" . $username . "&access_token=" . $access_token);
+    $user_id = $user_search->data[0]->id; // or use string 'self' to get your own media
+    $return = arvestrix_instagram_api_curl_connect("https://api.instagram.com/v1/users/" . $user_id . "/media/recent?access_token=" . $access_token);
+
+    /*foreach ($return->data as $post) {
+        echo '<a href="' . $post->images->standard_resolution->url . '" class="fancybox"><img src="' . $post->images->thumbnail->url . '" /></a>';
+    }*/
+}
+
+
+/**
+* Exclude pages and posts from search query
+**/
+
+function arvestrix_SearchFilter($query) {
+if ($query->is_search) {
+$query->set('post_type','product');
+}
+return $query;
+}
+ 
+add_filter('pre_get_posts','arvestrix_SearchFilter');
+
