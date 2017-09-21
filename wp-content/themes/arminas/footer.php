@@ -196,9 +196,14 @@
 
         function generate_add_to_cart_url(qty) {
 
-          var product = $("#product_id").val();
-          var addToCartUrl = "<?php echo home_url();?>";
-          $(".add-to-cart").attr("href",addToCartUrl+'/?add-to-cart='+product+'&quantity='+qty);
+            var product = $("#product_id").val();
+            var addToCartUrl = "<?php echo home_url();?>";
+            if (qty == 0) {
+              $(".add-to-cart").attr("href","javascript:void(0)");
+            } else {
+              $(".add-to-cart").attr("href",addToCartUrl+'/?add-to-cart='+product+'&quantity='+qty);
+            }
+            
         }
       </script>
       <?php wp_footer();?>

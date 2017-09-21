@@ -210,7 +210,7 @@ global $product;
 								<div class="col-sm-12">
 									<?php
 									$args = array( 
-									                'number'      => 10, 
+									                'number'      => 5, 
 									                'status'      => 'approve', 
 									                'post_status' => 'publish', 
 									                'post_type'   => 'product',
@@ -243,7 +243,9 @@ global $product;
 									</div>
 									<?php endforeach; ?>
 									
-									<a href="#" class="seeall">
+									<a href="<?php
+									if( get_comments_number() != 0 ):
+									echo home_url().'/customer-reviews/?post_id='.get_the_ID(); else : echo "#"; endif; ?>" class="seeall">
 									<?php comments_number( 'no responses', 'See 1 customer review', 'See all % customer reviews' ); ?>
 									</a>
 								</div>
@@ -263,4 +265,34 @@ global $product;
 			</div>
 		</div>
 	</div>
+	<!--Product variations -->
+	<?php
+	if ( $product->is_type( 'variable' ) ) : 
+	$variations = $product->get_available_variations();
+	//echo "<pre>";
+	//print_r($variations);
+	?>
+		<table border="1">
+			<thead>
+			    <tr>
+			        <td>Color</td>
+			        <td>Size</td>
+			        <td>Regular price</td>
+			        <td>Sale price</td>
+			    </tr>
+			</thead>
+			<tbody>
+			<?php foreach($variations as $variation): ?>
+
+			    <tr>
+			        <td><?php echo $variation['attributes']['attribute_pa_colors']; ?></td>
+			        <td><?php echo $variation['attributes']['attribute_pa_size']; ?></td>
+			        <td><?php echo $variation['display_regular_price'].get_woocommerce_currency_symbol(); ?></td>
+			        <td><?php echo $variation['display_price']. get_woocommerce_currency_symbol(); ?></td>
+			    </tr>
+			<?php endforeach; ?>    
+			</tbody>
+		</table>
+	<?php endif; ?>	
+	<!--Product variations-->
 </section>
