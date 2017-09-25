@@ -170,6 +170,7 @@
          });
       </script>
       <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.min.js"></script>
+      <script src="<?php echo get_template_directory_uri(); ?>/assets/js/notify.js"></script>
       <script type="text/javascript">
         $(document).ready(function(){
           $('.add').on('click',function(){
@@ -192,6 +193,7 @@
             generate_add_to_cart_url(currentVal-1);
 
           });
+
         });
 
         function generate_add_to_cart_url(qty) {
@@ -200,6 +202,7 @@
             var addToCartUrl = "<?php echo home_url();?>";
             if (qty == 0) {
               $(".add-to-cart").attr("href","javascript:void(0)");
+              $.notify("Please change quantity to 1 !");
             } else {
               $(".add-to-cart").attr("href",addToCartUrl+'/?add-to-cart='+product+'&quantity='+qty);
             }
