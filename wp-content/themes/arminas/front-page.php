@@ -156,7 +156,7 @@
 		<img src="<?php the_field('amazon_image');?>" alt="img">
 	</a>  
 </div>
-<div class="products">
+<div class="home-products">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
