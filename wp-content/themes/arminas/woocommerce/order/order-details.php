@@ -29,8 +29,12 @@ $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_cu
 
 <section class="woocommerce-order-details">
 
-	<h2 class="woocommerce-order-details__title"><?php _e( 'Order details', 'woocommerce' ); ?></h2>
-
+	
+	<div class="order-details-page">
+	<div class="container">
+	<div class="row">
+	<div class="col-md-12 col-sm-12">
+	<h2 class="woocommerce-order-details__title"><?php _e( 'Order details', 'woocommerce' ); ?></h2>	
 	<table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
 
 		<thead>
@@ -72,11 +76,15 @@ $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_cu
 		</tfoot>
 
 	</table>
+	
 
 	<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 
 	<?php if ( $show_customer_details ) : ?>
 		<?php wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) ); ?>
 	<?php endif; ?>
-
+	</div>
+	</div>
+	</div>
+	</div>
 </section>
