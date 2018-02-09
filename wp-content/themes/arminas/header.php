@@ -16,10 +16,33 @@
       <?php wp_head(); ?>
    </head>
    <?php $body_class = (is_page('sign-up') || is_page('login'))? 'login-page' : 'all-page' ; ?>
+
+   <?php $body_class = (is_page('category') || is_page(''))? 'category' : 'header-border' ; ?>
+
+
    <body class="<?php echo $body_class; ?>">
    <div id="wrapper">
       <div class="overlay"></div>
-      <header class="navbar navbar-default <?php if(is_front_page()): echo 'navbar-fixed-top'; endif; ?>">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <header class="navbar navbar-default border-head  <?php if(is_front_page()): echo 'navbar-fixed-top '; endif; ?>">
+
+
+
+
          <div class="container">
             <div class="row">
                <div class="col-md-6 col-xs-3">

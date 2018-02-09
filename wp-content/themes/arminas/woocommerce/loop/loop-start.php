@@ -16,4 +16,8 @@
  * @version     2.0.0
  */
 ?>
+<div class="cat-page">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
 <ul class="products">

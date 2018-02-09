@@ -51,6 +51,7 @@ add_settings_section("section", "General Settings", null, "theme-options");
 
 //register_setting( $option_group, $option_name, $sanitize_callback );
 register_setting("section", "HeaderLogo", "handle_header_logo_upload");
+register_setting("section", "InHeaderLogo", "handle_Inheader_logo_upload");
 register_setting("section", "edit_facebook_url");
 register_setting("section", "edit_instagram_url");
 register_setting("section", "edit_pinterest_url");
@@ -60,6 +61,7 @@ register_setting("section", "edit_license_text");
 
 //add_settings_field( $id, $title, $callback, $page, $section, $args );
 add_settings_field("HeaderLogo", "Upload Header Logo", "display_handle_header_logo_upload", "theme-options", "section");
+add_settings_field("InHeaderLogo", "Upload Inner Header Logo", "display_handle_Inheader_logo_upload", "theme-options", "section");
 add_settings_field("edit_facebook_url", "Edit Facebook Url", "display_facebook_element", "theme-options", "section");
 add_settings_field("edit_instagram_url", "Edit Instagram Url", "display_instagram_element", "theme-options", "section");
 add_settings_field("edit_pinterest_url", "Edit Pinterest Url", "display_pinterest_element", "theme-options", "section");
@@ -74,6 +76,13 @@ function display_handle_header_logo_upload()
 {?>
 		<input type="file" name="HeaderLogo" id="HeaderLogo"/> 
         <img src="<?php echo get_option('HeaderLogo'); ?>" height="100%" width="50%">
+<?php
+}
+
+function display_handle_Inheader_logo_upload()
+{?>
+		<input type="file" name="InHeaderLogo" id="InHeaderLogo"/> 
+        <img src="<?php echo get_option('InHeaderLogo'); ?>" height="100%" width="50%">
 <?php
 }
 
@@ -128,5 +137,17 @@ function handle_header_logo_upload($option) {
 	return get_option('HeaderLogo');
 	
 }
+function handle_Inheader_logo_upload($option) {
+
+	if(!empty($_FILES["InHeaderLogo"]["tmp_name"])) {
+		$urls = wp_handle_upload($_FILES["InHeaderLogo"], array('test_form' => FALSE));
+		$temp = $urls["url"];
+		return $temp;
+	}
+	//return $option;
+	return get_option('InHeaderLogo');
+	
+}
+
 
 ?>

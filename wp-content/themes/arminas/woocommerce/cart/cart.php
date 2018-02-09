@@ -24,6 +24,10 @@ wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
 
+<div class="c-page">
+<div class="container">
+<div class="row">
+<div class="col-md-7 col-sm-7">
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
@@ -152,7 +156,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 	</table>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
-
+</div>
+<div class="col-md-5 col-sm-5">
 <div class="cart-collaterals">
 	<?php
 		/**
@@ -164,5 +169,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 	 	do_action( 'woocommerce_cart_collaterals' );
 	?>
 </div>
-
+</div>
+</div>
+</div>
+</div>
 <?php do_action( 'woocommerce_after_cart' ); ?>

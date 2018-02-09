@@ -252,3 +252,6 @@ return $query;
  
 add_filter('pre_get_posts','arvestrix_SearchFilter');
 
+
+
+
