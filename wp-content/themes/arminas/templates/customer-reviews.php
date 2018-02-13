@@ -7,14 +7,28 @@ get_header();
 	<div class="row review-section1" >
 		<div class="col-sm-12">
 			<?php
+			define('DEFAULT_COMMENTS_PER_PAGE',5);
+			
+			$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+			$uri_segments = explode('/', $uri_path);
+
+			$page = (int) (empty($uri_segments[3]) ? 1 : $uri_segments[3]);
+
+			$limit = DEFAULT_COMMENTS_PER_PAGE;
+			$offset = ($page * $limit) - $limit;
+
 			$args = array( 
-			                'number'      => 5, 
-			                'status'      => 'approve', 
+			                'number'      => $limit, 
+			                'status'      => 'approve',
+			                'offset'	  => $offset, 
 			                'post_status' => 'publish', 
 			                'post_type'   => 'product',
 			                'post_id' 	  => $_GET['post_id']	
 			        );
 
+			$total_comments = get_comments(array('status'=>'approve'));
+			$pages = ceil(count($total_comments)/DEFAULT_COMMENTS_PER_PAGE);
+			
 			$comments = get_comments( $args );
 			foreach($comments as $comment) :
 			
@@ -45,27 +59,16 @@ get_header();
 	</div>
 </div>
 <?php
-$comments_per_page = 1;
-$current_page = max( 1, get_query_var('paged') );
-
-global $current_user;
-get_currentuserinfo();
-$userid = $current_user->ID;
-
-$args = array('user_id' => $userid, 'number' => 0);
-$comments = get_comments($args);
-
-$total_comments = count($comments);
-$total_pages = (($total_comments - 1) / $comments_per_page) + 1;
-
-$start = $comments_per_page * ($current_page - 1);
-$end = $start + $comments_per_page;
-
-// Might be good to test and make sure there are comments for the current page at this point!
-
-if($total_pages > 1) {
-    $args = array( 'total'=>$total_pages, 'current'=>$current_page );
-    paginate_links($args);
-}
+$args = array(
+'base'         => '%_%',
+'format'       => '?page=%#%',
+'total'        => ($pages-1),
+'current'      => $page,
+'prev_next'    => True,
+'prev_text'    => __('&laquo; Previous'),
+'next_text'    => __('Next &raquo;'),
+'type'         => 'plain');
+// ECHO THE PAGENATION 
+echo paginate_links( $args );
 ?>
 <?php get_footer(); ?>
