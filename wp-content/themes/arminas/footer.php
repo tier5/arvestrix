@@ -24,7 +24,7 @@
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-      <script src="<?php echo get_template_directory_uri(); ?>/assets/js/creative.min.js"></script>
+      <!-- <script src="<?php //echo get_template_directory_uri(); ?>/assets/js/creative.min.js"></script> -->
 
       <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-ui.js"></script>
       <script src='https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js'></script>

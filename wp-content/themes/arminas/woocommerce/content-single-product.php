@@ -155,8 +155,90 @@ global $product;
 							<div class="row rating-top">
 								<div class="col-sm-4">
 									<h4>Rating Snapshot</h4>
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" class="img-responsive" alt="image">
+									<!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" class="img-responsive" alt="image"> -->
+
+
+							<div class="row">
+								<div class="col-md-2 col-sm-2 align-center">
+									5 <i class="fa fa-star"></i>
 								</div>
+								<div class="col-md-5 col-sm-5" style="padding: 0">
+										
+								<div class="pipe">
+									<span class="width80"></span>
+
+								</div>
+
+								</div>
+								<div class="col-md-2 col-sm-2">
+									80
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-sm-2 align-center">
+									4 <i class="fa fa-star"></i>
+								</div>
+								<div class="col-md-5 col-sm-5" style="padding: 0">
+										
+								<div class="pipe">
+									<span class="width40"></span>
+
+								</div>
+
+								</div>
+								<div class="col-md-2 col-sm-2">
+									35
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-sm-2 align-center">
+									3 <i class="fa fa-star"></i>
+								</div>
+								<div class="col-md-5 col-sm-5" style="padding: 0">
+										
+								<div class="pipe">
+									<span class="width20"></span>
+
+								</div>
+
+								</div>
+								<div class="col-md-2 col-sm-2">
+									10
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-sm-2 align-center">
+									2 <i class="fa fa-star"></i>
+								</div>
+								<div class="col-md-5 col-sm-5" style="padding: 0">
+										
+								<div class="pipe">
+									<span class="width10"></span>
+
+								</div>
+
+								</div>
+								<div class="col-md-2 col-sm-2">
+									3
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-sm-2 align-center">
+									1 <i class="fa fa-star"></i>
+								</div>
+								<div class="col-md-5 col-sm-5" style="padding: 0">
+										
+								<div class="pipe">
+									<span class=""></span>
+
+								</div>
+
+								</div>
+								<div class="col-md-2 col-sm-2">
+									10
+								</div>
+							</div>
+							</div>
 								<div class="col-sm-4">
 									<h4>Average Customer Ratings</h4>
 									<ul>
@@ -199,13 +281,18 @@ global $product;
 									</div>
 								</div>
 								<div class="col-sm-4">
+									<!-- <a href="#comments_post_template" class="writereview">Write a Review</a> -->
 									<a href="#comments_post_template" class="writereview">Write a Review</a>
+
+
+									 ‎
 								</div>
-								<div id="comments_post_template">
-									<?php //comments_template( 'woocommerce/single-product-reviews' );?>
+								<div id="comments_post_template" style="dis">
+									<?php comments_template( 'woocommerce/single-product-reviews' );?>
 								</div>
 								
 							</div>
+							<div class="clearfix"></div>
 							<div class="row review-section">
 								<div class="col-sm-12">
 									<?php

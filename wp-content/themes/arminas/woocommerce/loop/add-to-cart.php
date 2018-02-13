@@ -22,4 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
+<<<<<<< HEAD
 echo "<a href=".get_the_permalink()." class='button product_type_simple add_to_cart_button ajax_add_to_cart'>Read More</a>";
+=======
+echo "<a href=".get_the_permalink()." class='button product_type_simple add_to_cart_button ajax_add_to_cart'>Buy Now</a>";
+>>>>>>> cd9c28f0d112612dbb09c271c6c43ea33c80f082
