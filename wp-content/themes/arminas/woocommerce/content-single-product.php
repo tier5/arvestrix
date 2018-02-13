@@ -20,6 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 global $product;
+
+$rating_1 = $product->get_rating_count(1);
+$rating_2 = $product->get_rating_count(2);
+$rating_3 = $product->get_rating_count(3);
+$rating_4 = $product->get_rating_count(4);
+$rating_5 = $product->get_rating_count(5);
 ?>
 
 <?php
@@ -155,7 +161,7 @@ global $product;
 							<div class="row rating-top">
 								<div class="col-sm-4">
 									<h4>Rating Snapshot</h4>
-									<!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/review.png" class="img-responsive" alt="image"> -->
+									<!-- <img src="<?php //echo get_template_directory_uri(); ?>/assets/images/review.png" class="img-responsive" alt="image"> -->
 
 
 							<div class="row">
@@ -165,13 +171,13 @@ global $product;
 								<div class="col-md-5 col-sm-5" style="padding: 0">
 										
 								<div class="pipe">
-									<span class="width80"></span>
+									<span style="width: <?php echo $rating_5;?>%;"></span>
 
 								</div>
 
 								</div>
 								<div class="col-md-2 col-sm-2">
-									80
+									<?php echo $rating_5;?>
 								</div>
 							</div>
 							<div class="row">
@@ -181,13 +187,13 @@ global $product;
 								<div class="col-md-5 col-sm-5" style="padding: 0">
 										
 								<div class="pipe">
-									<span class="width40"></span>
+									<span style="width: <?php echo $rating_4;?>%;"></span>
 
 								</div>
 
 								</div>
 								<div class="col-md-2 col-sm-2">
-									35
+									<?php echo $rating_4;?>
 								</div>
 							</div>
 							<div class="row">
@@ -197,13 +203,13 @@ global $product;
 								<div class="col-md-5 col-sm-5" style="padding: 0">
 										
 								<div class="pipe">
-									<span class="width20"></span>
+									<span style="width: <?php echo $rating_3;?>%;"></span>
 
 								</div>
 
 								</div>
 								<div class="col-md-2 col-sm-2">
-									10
+									<?php echo $rating_3;?>
 								</div>
 							</div>
 							<div class="row">
@@ -213,13 +219,13 @@ global $product;
 								<div class="col-md-5 col-sm-5" style="padding: 0">
 										
 								<div class="pipe">
-									<span class="width10"></span>
+									<span style="width: <?php echo $rating_2;?>%;"></span>
 
 								</div>
 
 								</div>
 								<div class="col-md-2 col-sm-2">
-									3
+									<?php echo $rating_2;?>
 								</div>
 							</div>
 							<div class="row">
@@ -229,13 +235,13 @@ global $product;
 								<div class="col-md-5 col-sm-5" style="padding: 0">
 										
 								<div class="pipe">
-									<span class=""></span>
+									<span style="width: <?php echo $rating_1;?>%;"></span>
 
 								</div>
 
 								</div>
 								<div class="col-md-2 col-sm-2">
-									10
+									<?php echo $rating_1;?>
 								</div>
 							</div>
 							</div>
@@ -326,7 +332,6 @@ global $product;
 										</div>
 										<div class="review-title"><?php echo $comment->comment_content; ?></div>
 										<div class="author">By <?php echo $comment->comment_author; ?>, <?php echo $date->diff($now)->format("%d days"); ?> ago</div>
-										<div class="review-body"><?php echo $comment->comment_content; ?></div>
 									</div>
 									<?php endforeach; ?>
 									
