@@ -3,8 +3,8 @@
 get_header(); 
 
 ?>
-<div class="home-about-sec">
-	<div class="row review-section">
+<div class="home-about-sec" style="background: #fff;">
+	<div class="row review-section1" >
 		<div class="col-sm-12">
 			<?php
 			$args = array( 
@@ -21,6 +21,7 @@ get_header();
 			$date = new DateTime($comment->comment_date);
 			$now = new DateTime();
 			?>
+			<div >
 			<div class="each-review">
 				<div class="ratings">
 				<?php $rating =  get_comment_meta( $comment->comment_ID, 'rating', true );
@@ -36,9 +37,10 @@ get_header();
 				</div>
 				<div class="review-title"><?php echo $comment->comment_content; ?></div>
 				<div class="author">By <?php echo $comment->comment_author; ?>, <?php echo $date->diff($now)->format("%d days"); ?> ago</div>
-				<div class="review-body"><?php echo $comment->comment_content; ?></div>
 			</div>
+			
 			<?php endforeach; ?>
+			</div>
 		</div>
 	</div>
 </div>
@@ -60,10 +62,6 @@ $start = $comments_per_page * ($current_page - 1);
 $end = $start + $comments_per_page;
 
 // Might be good to test and make sure there are comments for the current page at this point!
-
-for($i = $start; $i < $end; $i++) {
-    echo('<br />' . $comment->comment_date . '<br />' . $comment->comment_content);
-}
 
 if($total_pages > 1) {
     $args = array( 'total'=>$total_pages, 'current'=>$current_page );

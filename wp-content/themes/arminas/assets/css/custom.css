@@ -403,6 +403,22 @@
     margin-top: 50px;
     padding: 4px 20px 20px;
 }
+.review-section1{
+    padding: 4px 20px 20px;
+}
+.review-section1 .each-review{border: 1px dashed #0A31A3; padding: 10px; margin: 21px 0 8px;}
+.review-section1 .each-review:last-child{margin-bottom: 50px;}
+
+
+.review-section1 .each-review .ratings{font-size: 20px; color: #ffa52f;}
+
+.review-section1 .each-review .review-title{font-size: 20px;}
+
+
+.review-section1 .each-review .author{font-size: 14px; color: #333;}
+
+
+
 
 .review-title{
     font-family: 'Open Sans', sans-serif;
@@ -413,7 +429,7 @@
 }
 
 .each-review{
-    margin: 40px 0;
+    margin: 40px 0 44px;
 }
 
 .each-review .author{
