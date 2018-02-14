@@ -13,7 +13,9 @@ get_header();
 			$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 			$uri_segments = explode('/', $uri_path);
 
-			$page = (int) (empty($uri_segments[3]) ? 1 : $uri_segments[3]);
+			
+			$page = (get_query_var('page')) ? get_query_var('page') : 1;
+
 
 			$limit = DEFAULT_COMMENTS_PER_PAGE;
 			$offset = ($page * $limit) - $limit;
@@ -63,9 +65,9 @@ get_header();
 <div class="pagi">
 <?php
 $args = array(
-'base'         => '%_%',
+'base'         => @add_query_arg('page','%#%'),
 'format'       => '?page=%#%',
-'total'        => ($pages-1),
+'total'        => $pages,
 'current'      => $page,
 'prev_next'    => True,
 'prev_text'    => __('&laquo; Previous'),
