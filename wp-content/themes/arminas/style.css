@@ -604,8 +604,16 @@ p.comment-form-comment label{vertical-align: top;}
 ol.commentlist{display: none;}
 
 
+.comment-respond{padding: 0 15px;}
 p.comment-form-comment label{display: block;}
 p.comment-form-comment textarea{width: 100%; padding: 10px;}
+
+p.comment-form-author input{width: 100%; padding: 10px; border-radius: 0;
+border: 1px solid #ccc;}
+p.comment-form-email input{width: 100%; padding: 10px; border-radius: 0;
+border: 1px solid #ccc;}
+
+
 p.form-submit .submit{background: #0000fe; border: 1px solid #0000fe; text-transform: uppercase; 
 font-family: 'Open Sans', sans-serif; padding: 10px 17px; color: #fff; font-weight: 700;}
 
@@ -630,10 +638,13 @@ p.stars a:hover{background: #ffa52f; color: #fff;}
 .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt
 {background: #ffa52f}
 
+.pagi{text-align: center; padding: 0 0 50px 0;}
 
+.pagi .page-numbers{background: #ccc; /*width: 40px; height: 40px;*/ 
+    display: inline-block; padding: 10px 15px; font-size: 16px; color: #000; margin: 0 2px;}
 
-
-
+.pagi span.page-numbers{background: #0A31A3; color: #fff;}
+.pagi .page-numbers:hover{background: #0A31A3; color: #fff;}
 
 @media screen and (max-width: 901px) {
     .header-text h2 {
@@ -722,7 +733,7 @@ ul.products li{width: 46%;}
 
    ul.products li{width: 100%; margin: 0 0 15px;}
 
-
+   .pagi .page-numbers{font-size: 12px; padding: 3px 6px;}
 
 
 }

@@ -4,6 +4,7 @@ get_header();
 
 ?>
 <div class="home-about-sec" style="background: #fff;">
+	<div class="container">
 	<div class="row review-section1" >
 		<div class="col-sm-12">
 			<?php
@@ -57,7 +58,9 @@ get_header();
 			</div>
 		</div>
 	</div>
+	</div>
 </div>
+<div class="pagi">
 <?php
 $args = array(
 'base'         => '%_%',
@@ -71,4 +74,5 @@ $args = array(
 // ECHO THE PAGENATION 
 echo paginate_links( $args );
 ?>
+</div>
 <?php get_footer(); ?>
