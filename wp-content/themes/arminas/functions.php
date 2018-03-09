@@ -252,6 +252,82 @@ return $query;
  
 add_filter('pre_get_posts','arvestrix_SearchFilter');
 
+add_action( 'save_post', 'criteo_products_feed_csv');
+
+function criteo_products_feed_csv() {
+
+ //get_woocommerce_product_list();
+                    
+//output headers so that the file is downloaded rather than displayed
+header('Content-type: text/csv');
+header('Content-Disposition: attachment; filename="criteo_feed.csv"');
+ 
+// do not cache the file
+header('Pragma: no-cache');
+header('Expires: 0');
+ 
+// create a file pointer connected to the output stream
+$file = fopen('php://output', 'w');
+ 
+// send the column headers
+fputcsv($file, array('id', 'name', 'small image', 'big image', 'product URL', 'description', 'price', 'retail price', 'recommendable', 'instock', 'categoryid1', 'categoryid2', 'categoryid3', 'published', 'child SKU'));
+ 
+// Sample data. This can be fetched from mysql too
+$data = get_woocommerce_product_list();
+ 
+// output each row of the data
+foreach ($data as $row)
+{
+fputcsv($file, $row);
+}
+ 
+exit();
+}
+
+
+
+// ********* Get all products and variations return in array ( id, title)*******
+function get_woocommerce_product_list() {
+    $full_product_list = array();
+    $loop = new WP_Query( array( 'post_type' => array('product', 'product_variation'), 'posts_per_page' => -1 ) );
+    while ( $loop->have_posts() ) : $loop->the_post();
+        $theid = get_the_ID();
+        
+        $product = new WC_Product($theid);
+        $_product = wc_get_product( $theid );
+
+        $parent_id = wp_get_post_parent_id($theid );
+
+        
+        $thetitle = get_the_title( $parent_id);
+        $smallImage = get_the_post_thumbnail_url();
+        $bigImage = get_the_post_thumbnail_url();
+        $productUrl = get_the_permalink();
+        $description = $_product->get_short_description();
+        $price  = $_product->get_sale_price();
+        $retailPrice = $_product->get_regular_price();
+        $instock = get_post_meta($theid, '_stock_status', true );
+        
+        $terms = get_the_terms( $theid, 'product_cat' );
+        $categories = array();
+ 
+        foreach ( $terms as $term ) {
+            $categories[] = $term->name;
+        }
+                             
+        $category = join( "> ", $categories );
+
+        $sku = get_post_meta($theid, '_sku', true );
+
+        //$full_product_list[] = array($theid, $thetitle, $smallImage, $bigImage, $productUrl, $description, $price, $retailPrice, $instock, $category);
+        
+    endwhile; wp_reset_query();
+    // echo "<pre>";
+    //     print_r($full_product_list);
+    //     exit;
+    return $full_product_list;
+}
+
 
 
 
